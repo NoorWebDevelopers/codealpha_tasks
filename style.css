@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    color: white;
+    background: #bc4e9c;
+    background: linear-gradient(to right, #f80759, #bc4e9c);
+}
+
+.heading h1 {
+    background: linear-gradient(to right, #ff0084, #7a0443);
+    text-align: center;
+    font-size: 2.75rem;
+    padding: 10px;
+    border-bottom: 2px solid #fffafa;
+}
+
+.container {
+    max-width: 1400px;
+    width: 90%;
+    margin: auto;
+}
+
+.main-section {
+    margin: 60px 0;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#todos-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
+
+.task {
+    background-color: white;
+    color: black;
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px 7px #0000001f;
+}
+
+.p-10 {
+    padding: 10px 10px 0;
+}
+
+.task .task-header,
+.task-adding .task-header-adding {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #DB297A;
+}
+
+.task .task-header .title {
+    font-size: 1.5rem;
+}
+
+.btn {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #DB297A;
+    color: white;
+    border-radius: 6px;
+}
+
+.btn:hover,
+.function-buttons:hover {
+    background-color: #db2979e3;
+}
+
+.task .desc {
+    height: 63%;
+    border-bottom: 2px solid #DB297A;
+    padding: 15px 0;
+}
+
+.task .info {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.task .info .dateBox p {
+    padding-top: 5px;
+}
+
+.task .buttons {
+    font-size: 1.7rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.task .buttons .buttons-inner {
+    position: absolute;
+    bottom: 37px;
+    right: -8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 2px solid #fffafa;
+    background-color: white;
+    transform: scale(0);
+    transform-origin: 76px 100px;
+    transition: transform .75s;
+}
+
+.task .buttons .buttons-inner.button-show {
+    transform: scale(1);
+}
+
+.task .buttons .buttons-inner button {
+    border: none;
+    background-color: transparent;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.task .buttons .buttons-inner .delete-task {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #dbd7d7;
+}
+
+.task .buttons .buttons-inner button:hover {
+    opacity: 1;
+}
+
+.function-buttons {
+    margin-top: 10px;
+    background-color: #DB297A;
+    padding: 5px 8px;
+    border: 2px solid #fffafa;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.task .add-delete {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    color: #DB297A;
+    cursor: pointer;
+}
+
+
+
+.task .add-delete .circle {
+    font-size: 2.3rem;
+    outline: 2px solid #DB297A;
+    outline-offset: 9px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s linear;
+    overflow: auto;
+}
+
+.overlay.show {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto
+}
+
+.overlay #add-edit-task {
+    flex-basis: 360px;
+    margin: 0 10px;
+    transform: translateY(-50px);
+    transition: all 0.4s linear;
+}
+
+.overlay.show #add-edit-task {
+    transform: translateY(0); 
+}
+
+.hide {
+    display: none;
+}
+
+#add-edit-task .task-adding {
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px 7px #0000001f;
+}
+
+#add-edit-task .task-adding form {
+    padding: 10px;
+    position: relative;
+}
+
+#add-edit-task .task-adding form label {
+    display: block;
+    padding: 10px 0;
+    font-size: 1.5rem;
+}
+
+#add-edit-task .task-adding form .add-edit-title,
+#add-edit-task .task-adding form .add-edit-desc {
+    width: 100%;
+    border: 2px solid #eee6e6;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+
+#add-edit-task .task-adding form .add-edit-desc {
+    resize: none;
+    height: 120px;
+}
+
+#add-edit-task .task-adding form .add-edit-title:focus,
+#add-edit-task .task-adding form .add-edit-desc:focus {
+    outline: none;
+    box-shadow: 2px 2px 10px #0000001f;
+    border: 2px solid #dad0d0bd;
+}
+
+.task-adding .add-edit-task-btn {
+    width: 100%;
+    display: block;
+    font-size: 1.25rem;
+}
+
+.required {
+    position: absolute;
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    top: 18px;
+    left: 62px;
+    animation: required_title 5s paused forwards;
+}
+
+@keyframes required_title {
+    0% {
+        top: 3px;
+    }
+
+    20% {
+        top: 18px;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.remove-element {
+    animation: remove 1s forwards 0.5s;
+}
+
+@keyframes remove {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.complete {
+    text-decoration: line-through;
+}
+
+.task-completed {
+    opacity: 0.8;
+}
+
+#messageBox {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px 7px #0000001f;
+    text-align: center;
+    animation: fade 1s;
+}
+
+@keyframes fade {
+    0% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#messageBox #yesNoButtons .function-buttons {
+    font-size: 1.3rem;
+    padding: 5px 20px;
+    margin: 10px 20px 0;
+    font-style: normal;
+}
+
+#messageBox #yes {
+    background-color: green;
+}
+
+#messageBox #no {
+    background-color: red;
+}
